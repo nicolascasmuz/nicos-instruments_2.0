@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import styled from "styled-components";
-import imgPrueba from "../resources/gibson-sg-faded-2018.jpg";
 
 const CardComp = styled.div`
   display: grid;
@@ -57,12 +57,15 @@ const CardComp = styled.div`
 
   @media (min-width: 769px) {
     .card-price-link {
+      flex-direction: row;
+      justify-content: space-between;
       align-items: initial;
       gap: 0px;
     }
   }
 
   .card-price {
+    display: inline;
     font-family: "Bebas", cursive;
     font-size: 25px;
     margin: 0px 10px;
@@ -70,22 +73,40 @@ const CardComp = styled.div`
   }
 
   .card-see-more {
-    display: block;
     font-family: "Bebas", cursive;
     font-size: 15px;
+    color: #f0efda;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #ac1a22;
+    width: 75px;
+    height: 35px;
     margin: 0px 10px;
+    transition: all 0.25s;
+  }
+
+  .card-see-more:hover {
+    opacity: 85%;
   }
 
   @media (min-width: 769px) {
     .card-see-more {
-      text-align: right;
+      text-align: center;
     }
   }
 `;
 
 export function Card(props) {
-  const altResplaced = props.title.replace(" ", "-");
-  const altToLowerCase = altResplaced.toLowerCase();
+  const navigate = useNavigate();
+
+  function HandleClick(e) {
+    e.preventDefault();
+    const attribute = e.target.getAttribute("productName");
+    const attModified = attribute.toLowerCase().replaceAll(" ", "-");
+
+    navigate("/product/" + attModified);
+  }
 
   return (
     <CardComp>
@@ -97,9 +118,13 @@ export function Card(props) {
       />
       <div className="card-price-link">
         <h4 className="card-price">${props.price}</h4>
-        <a href="" className="card-see-more">
+        <button
+          className="card-see-more"
+          productName={props.title}
+          onClick={HandleClick}
+        >
           Ver mas...
-        </a>
+        </button>
       </div>
     </CardComp>
   );

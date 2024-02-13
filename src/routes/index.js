@@ -6,6 +6,7 @@ import { BodyComp } from "../components/body-comp";
 import { ResultsPage } from "../pages/results-page";
 import { ProductsPage } from "../pages/products-page";
 import { CategoryPage } from "../pages/category-page";
+import { ProductPage } from "../pages/product-page";
 
 export const indexRouter = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ export const indexRouter = createBrowserRouter([
       {
         path: "/category/:cat",
         element: <CategoryPage />,
+      },
+      {
+        path: "/product/:name",
+        element: <ProductPage />,
       },
     ],
   },
