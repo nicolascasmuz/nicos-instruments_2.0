@@ -7,6 +7,7 @@ import { ResultsPage } from "../pages/results-page";
 import { ProductsPage } from "../pages/products-page";
 import { CategoryPage } from "../pages/category-page";
 import { ProductPage } from "../pages/product-page";
+import { AboutUsPage } from "../pages/about-us-page";
 
 export const indexRouter = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const indexRouter = createBrowserRouter([
       {
         path: "/product/:name",
         element: <ProductPage />,
+      },
+      {
+        path: "/about-us",
+        element: <AboutUsPage />,
       },
     ],
   },

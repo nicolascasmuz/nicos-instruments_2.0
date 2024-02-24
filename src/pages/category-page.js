@@ -39,11 +39,28 @@ export function CategoryPage() {
       }
     }
 
-    .h2__category {
+    .category__top-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+    }
+
+    .category__h2 {
       font-family: "Bungee Shade", cursive;
       font-size: 25px;
       color: #f0efda;
-      margin: 0 0 0 70px;
+    }
+
+    .category__select {
+      font-family: "Bebas", cursive;
+      font-size: 18px;
+      color: #080808;
+      width: 120px;
+      height: 30px;
+      background-color: #f0efda;
+      border: none;
+      border-radius: 5px;
     }
   `;
 
@@ -51,8 +68,9 @@ export function CategoryPage() {
   const paramsReplaced = params.cat.replace("-", " ");
 
   const [products, setProducts] = useState([]);
+  const [order, setOrder] = useState("menor precio");
 
-  async function pullResults(cat) {
+  async function pullResults(cat, order) {
     fetch(
       "https://preview.contentful.com/spaces/boc2rp8m0dgi/environments/master/entries?access_token=Y1_N0gShtcshwQbkaOPc2u0lA-7zD8351Q0NWQCRCsU&&content_type=nicosStock"
     )
@@ -62,23 +80,67 @@ export function CategoryPage() {
       .then((data) => {
         const items = data.items;
 
-        const searchProduct = items.filter((p) => {
-          return p.fields.cat === cat;
-        });
+        if (order === "menor precio") {
+          const searchProduct = items.filter((p) => {
+            const filteredProducts = p.fields.cat === cat;
+            return filteredProducts;
+          });
 
-        console.log("searchProduct: ", searchProduct);
-        setProducts(searchProduct);
+          const lowerPrice = searchProduct.sort((pA, pB) => {
+            if (pA.fields.price > pB.fields.price) {
+              return 1;
+            }
+            if (pA.fields.price < pB.fields.price) {
+              return -1;
+            }
+            return 0;
+          });
+
+          setProducts(lowerPrice);
+        } else if (order === "mayor precio") {
+          const searchProduct = items.filter((p) => {
+            const filteredProducts = p.fields.cat === cat;
+            return filteredProducts;
+          });
+
+          const higherPrice = searchProduct.sort((pA, pB) => {
+            if (pA.fields.price < pB.fields.price) {
+              return 1;
+            }
+            if (pA.fields.price > pB.fields.price) {
+              return -1;
+            }
+            return 0;
+          });
+
+          setProducts(higherPrice);
+        }
       });
   }
 
+  function handleChange(e) {
+    setOrder(e.target.value);
+  }
+
   useEffect(() => {
-    pullResults(params.cat);
-  }, [params]);
+    pullResults(params.cat, order);
+  }, [params.cat, order]);
 
   return (
     <BodySection className="general-comp">
       <div className="general-section__wrapper">
-        <h2 className="h2__category">{paramsReplaced}</h2>
+        <div className="category__top-container">
+          <h2 className="category__h2">{paramsReplaced}</h2>
+          <select
+            className="category__select"
+            name="order"
+            value={order}
+            onChange={handleChange}
+          >
+            <option value="menor precio">Menor precio</option>
+            <option value="mayor precio">Mayor precio</option>
+          </select>
+        </div>
         <div className="card-wrapper">
           {products.map((r, index) => (
             <Card

@@ -39,11 +39,17 @@ export function ResultsPage() {
       }
     }
 
-    .h2__results {
+    .results__top-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 50px;
+    }
+
+    .results__h2 {
       font-family: "Bungee Shade", cursive;
       font-size: 25px;
       color: #f0efda;
-      margin: 0 0 0 70px;
     }
 
     .h2__loading {
@@ -52,13 +58,25 @@ export function ResultsPage() {
       color: #f0efda;
       margin: 0 0 0 70px;
     }
+
+    .results__select {
+      font-family: "Bebas", cursive;
+      font-size: 18px;
+      color: #080808;
+      width: 120px;
+      height: 30px;
+      background-color: #f0efda;
+      border: none;
+      border-radius: 5px;
+    }
   `;
 
   const params = useParams();
 
   const [results, setResults] = useState([]);
+  const [order, setOrder] = useState("menor precio");
 
-  async function pullResults(q) {
+  async function pullResults(q, order) {
     fetch(
       "https://preview.contentful.com/spaces/boc2rp8m0dgi/environments/master/entries?access_token=Y1_N0gShtcshwQbkaOPc2u0lA-7zD8351Q0NWQCRCsU&&content_type=nicosStock"
     )
@@ -67,28 +85,73 @@ export function ResultsPage() {
       })
       .then((data) => {
         const items = data.items;
-
         const lowerCaseQuery = q.toLowerCase();
 
-        const searchProduct = items.filter((p) => {
-          const productTitle = p.fields.title.toLowerCase();
-          const filteredProducts = productTitle.includes(lowerCaseQuery);
+        if (order === "menor precio") {
+          const searchProduct = items.filter((p) => {
+            const productTitle = p.fields.title.toLowerCase();
+            const filteredProducts = productTitle.includes(lowerCaseQuery);
 
-          return filteredProducts;
-        });
+            return filteredProducts;
+          });
 
-        setResults(searchProduct);
+          const lowerPrice = searchProduct.sort((pA, pB) => {
+            if (pA.fields.price > pB.fields.price) {
+              return 1;
+            }
+            if (pA.fields.price < pB.fields.price) {
+              return -1;
+            }
+            return 0;
+          });
+
+          setResults(lowerPrice);
+        } else if (order === "mayor precio") {
+          const searchProduct = items.filter((p) => {
+            const productTitle = p.fields.title.toLowerCase();
+            const filteredProducts = productTitle.includes(lowerCaseQuery);
+
+            return filteredProducts;
+          });
+
+          const higherPrice = searchProduct.sort((pA, pB) => {
+            if (pA.fields.price < pB.fields.price) {
+              return 1;
+            }
+            if (pA.fields.price > pB.fields.price) {
+              return -1;
+            }
+            return 0;
+          });
+
+          setResults(higherPrice);
+        }
       });
   }
 
+  function handleChange(e) {
+    setOrder(e.target.value);
+  }
+
   useEffect(() => {
-    pullResults(params.query);
-  }, [params]);
+    pullResults(params.query, order);
+  }, [params, order]);
 
   return (
     <BodySection className="general-comp">
       <div className="general-section__wrapper">
-        <h2 className="h2__results">Resultados: {results.length}</h2>
+        <div className="results__top-container">
+          <h2 className="results__h2">Resultados: {results.length}</h2>
+          <select
+            className="results__select"
+            name="order"
+            value={order}
+            onChange={handleChange}
+          >
+            <option value="menor precio">Menor precio</option>
+            <option value="mayor precio">Mayor precio</option>
+          </select>
+        </div>
         <div className="card-wrapper">
           {results.length === 0 ? (
             <h2 className="h2__loading">Cargando...</h2>

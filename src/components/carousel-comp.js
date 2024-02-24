@@ -1,72 +1,16 @@
-import React, { useEffect } from "react";
-
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
-import piano from "../resources/Piano-Digital-Kawai-Kdp120.jpg";
-import teclado from "../resources/Teclado-musical-Yamaha-PSR-E273.jpg";
-import strato from "../resources/fender-stratocaster-special-usa.jpg";
-import lesPaul from "../resources/Gibson-Modern-Collection-Les-Paul-Studio.jpg";
-import sg from "../resources/gibson-sg-faded-2018.jpg";
-import bajo from "../resources/Sterling-By-Music-Man-Stingray.jpg";
 import arrowLeft from "../resources/arrow-left.png";
 import arrowRight from "../resources/arrow-right.png";
 
 export function CarouselComp() {
-  useEffect(() => {
-    const carouselEl = document.querySelector(".carousel");
-    const firstImgEl = carouselEl.querySelectorAll("img")[0];
-    const arrowsEl = document.querySelectorAll(".carousel-wrapper .arrow");
-
-    const interval = setInterval(() => {
-      carouselEl.scrollLeft++;
-    }, 100);
-
-    let isDragStart = false,
-      prevPageX,
-      prevScrollLeft;
-
-    let firstImgWidth = firstImgEl.clientWidth + 40;
-
-    arrowsEl.forEach((arrow) => {
-      arrow.addEventListener("click", () => {
-        clearInterval(interval);
-        carouselEl.scrollLeft +=
-          arrow.id === "left" ? -firstImgWidth : firstImgWidth;
-      });
-    });
-
-    function dragStart(e) {
-      isDragStart = true;
-      prevPageX = e.pageX;
-      prevScrollLeft = carouselEl.scrollLeft;
-    }
-
-    function dragging(e) {
-      if (!isDragStart) return;
-      e.preventDefault();
-      carouselEl.classList.add("dragging");
-      let positionDiff = e.pageX - prevPageX;
-      carouselEl.scrollLeft = prevScrollLeft - positionDiff;
-    }
-
-    function dragStop() {
-      isDragStart = false;
-      carouselEl.classList.remove("dragging");
-    }
-
-    carouselEl.addEventListener("mousedown", (e) => {
-      dragStart(e);
-      clearInterval(interval);
-    });
-    carouselEl.addEventListener("mousemove", dragging);
-    carouselEl.addEventListener("mouseup", dragStop);
-  }, []);
-
   const CarouselDiv = styled.div`
     min-width: 300px;
     max-width: 1000px;
     position: relative;
     margin: 0 30px;
-  
+
     .carousel-wrapper .arrow {
       top: 50%;
       height: 46px;
@@ -77,11 +21,13 @@ export function CarouselComp() {
     }
   
     .carousel-wrapper .arrow:first-child {
-      left: -23px;
+      left: 12px;
+      z-index: 10;
     }
   
     .carousel-wrapper .arrow:last-child {
-      right: -23px;
+      right: 13px;
+      z-index: 10;
     }
   
     .carousel-wrapper .carousel {
@@ -90,6 +36,10 @@ export function CarouselComp() {
       white-space: nowrap;
       scroll-behavior: smooth;
       margin: 0 35px;
+    }
+
+    .carousel {
+      gap: 8px;
     }
 
     .carousel.dragging {
@@ -105,7 +55,7 @@ export function CarouselComp() {
       height: 340px;
       object-fit: cover;
       width: 100%;
-      margin-left: 8px;
+      margin-right: 8px;
     }
   
     @media (min-width: 469px) {
@@ -113,7 +63,7 @@ export function CarouselComp() {
         height: 340px;
         object-fit: cover;
         width: calc(100% / 2);
-        margin-left: 8px;
+        margin-right: 8px;
       }
     }
   
@@ -122,27 +72,183 @@ export function CarouselComp() {
         height: 340px;
         object-fit: cover;
         width: calc(100% / 3);
-        margin-left: 8px;
+        margin-right: 8px;
       }
     }
   
     .carousel img:first-child {
       margin-left: 0px;
     }
+
+    .cat-container {
+      position: relative;
+      height: 176px;
+      text-align: center;
+    }
+
+    @media (min-width: 1000px) {
+      .cat-container {
+        height: 238px;
+      }
+    }
+
+    .cat-container .cat-img {
+      transition: all 0.25s;
+    }
+
+    .text-overlay {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+
+    .cat-container .text-overlay {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      font-family: "Bebas", cursive;
+      font-size: 25px;
+      opacity: 0;
+      color: #fafafa;
+      margin: 0;
+      transition: all 0.25s;
+    }
+
+    .cat-container:hover {
+      .text-overlay {
+        opacity: 1;
+      }
+      .cat-img {
+        filter: blur(3px) brightness(0.2);
+      }
+    }
     }
   `;
+
+  const [products, setProducts] = useState([]);
+  const [resultsFetched, setResultsFetched] = useState(false);
+  const carouselRef = useRef(null);
+
+  useEffect(() => {
+    if (!resultsFetched) {
+      pullResults();
+      setResultsFetched(true);
+    }
+  }, [resultsFetched]);
+
+  async function pullResults() {
+    fetch(
+      "https://preview.contentful.com/spaces/boc2rp8m0dgi/environments/master/entries?access_token=Y1_N0gShtcshwQbkaOPc2u0lA-7zD8351Q0NWQCRCsU&&content_type=nicosStock"
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        const items = data.items;
+
+        const sortProducts = items.sort((pA, pB) => {
+          if (pA.fields.price < pB.fields.price) {
+            return 1;
+          }
+          if (pA.fields.price > pB.fields.price) {
+            return -1;
+          }
+          return 0;
+        });
+
+        const bestProducts = sortProducts.slice(0, 6);
+
+        setProducts(bestProducts);
+      });
+  }
+
+  useEffect(() => {
+    const carouselEl = document.querySelector(".carousel");
+    const firstImgEl = carouselEl
+      ? carouselEl.querySelectorAll("img")[0]
+      : null;
+    const arrowsEl = document.querySelectorAll(".carousel-wrapper .arrow");
+
+    const interval = setInterval(() => {
+      if (carouselEl) {
+        carouselEl.scrollLeft++;
+      }
+    }, 100);
+
+    let isDragStart = false,
+      prevPageX,
+      prevScrollLeft;
+
+    let firstImgWidth = firstImgEl ? firstImgEl.clientWidth + 40 : 0;
+
+    arrowsEl.forEach((arrow) => {
+      arrow.addEventListener("click", () => {
+        clearInterval(interval);
+        if (carouselEl) {
+          carouselEl.scrollLeft +=
+            arrow.id === "left" ? -firstImgWidth : firstImgWidth;
+        }
+      });
+    });
+
+    function dragStart(e) {
+      isDragStart = true;
+      prevPageX = e.pageX;
+      prevScrollLeft = carouselEl ? carouselEl.scrollLeft : 0;
+    }
+
+    function dragging(e) {
+      if (!isDragStart || !carouselEl) return;
+      e.preventDefault();
+      carouselEl.classList.add("dragging");
+      let positionDiff = e.pageX - prevPageX;
+      carouselEl.scrollLeft = prevScrollLeft - positionDiff;
+    }
+
+    function dragStop() {
+      isDragStart = false;
+      if (carouselEl) {
+        carouselEl.classList.remove("dragging");
+      }
+    }
+
+    if (carouselEl) {
+      carouselEl.addEventListener("mousedown", (e) => {
+        dragStart(e);
+        clearInterval(interval);
+      });
+      carouselEl.addEventListener("mousemove", dragging);
+      carouselEl.addEventListener("mouseup", dragStop);
+    }
+  }, [products]);
 
   return (
     <CarouselDiv>
       <div className="carousel-wrapper">
         <img id="left" className="arrow" src={arrowLeft} alt="arrow-left" />
         <div className="carousel">
-          <img src={piano} alt="piano" />
-          <img src={teclado} alt="teclado" />
-          <img src={strato} alt="strato" />
-          <img src={lesPaul} alt="les-paul" />
-          <img src={sg} alt="sg" />
-          <img src={bajo} alt="bajo" />
+          {products.map((r, index) => (
+            <Link
+              className="cat-container"
+              to={
+                "/product/" + r.fields.title.toLowerCase().replaceAll(" ", "-")
+              }
+            >
+              <img
+                className="cat-img"
+                src={r.fields.url}
+                alt={r.fields.title.toLowerCase().replaceAll(" ", "-")}
+              />
+              <div className="text-overlay">
+                <span>
+                  {r.fields.title.length > 20
+                    ? `${r.fields.title.substring(0, 20)}...`
+                    : r.fields.title}
+                </span>
+                <span>${r.fields.price}</span>
+              </div>
+            </Link>
+          ))}
         </div>
         <img id="right" className="arrow" src={arrowRight} alt="arrow-right" />
       </div>

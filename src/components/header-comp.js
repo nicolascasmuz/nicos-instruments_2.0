@@ -303,9 +303,9 @@ export function Header() {
           <a href="" className="header__option">
             Inicio
           </a>
-          <a href="" className="header__option">
+          <Link className="header__option" to="/about-us">
             Quienes somos
-          </a>
+          </Link>
           <Link className="header__option" to="/products">
             Productos
           </Link>
@@ -315,9 +315,9 @@ export function Header() {
         </li>
       </ul>
       <nav className="nav">
-        <a className="option" href="">
+        <Link className="option" to="/about-us">
           Quienes somos
-        </a>
+        </Link>
         <Link className="option" to="/products">
           Productos
         </Link>
