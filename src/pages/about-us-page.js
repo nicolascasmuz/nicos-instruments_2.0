@@ -14,9 +14,16 @@ export function AboutUsPage() {
 
     .general-section__wrapper {
       display: grid;
-      grid-template-rows: auto auto;
-      grid-template-columns: auto auto;
       gap: 20px;
+    }
+
+    @media (min-width: 700px) {
+      .general-section__wrapper {
+        display: grid;
+        grid-template-rows: auto auto;
+        grid-template-columns: auto auto;
+        gap: 20px;
+      }
     }
 
     .about-us__title {
@@ -26,9 +33,23 @@ export function AboutUsPage() {
       margin: 0;
     }
 
+    @media (min-width: 700px) {
+      .about-us__title {
+        grid-row: 1;
+        grid-column: 1 / span 2;
+      }
+    }
+
     .about-us__pic {
-      grid-row: 2;
+      grid-row: 1;
       grid-column: 1;
+    }
+
+    @media (min-width: 700px) {
+      .about-us__pic {
+        grid-row: 2;
+        grid-column: 1;
+      }
     }
 
     .about-us__shop {
