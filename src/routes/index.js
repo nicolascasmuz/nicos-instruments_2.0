@@ -1,22 +1,23 @@
 import { createBrowserRouter } from "react-router-dom";
 import reportWebVitals from "../reportWebVitals";
 
-import { Main } from "../pages/main-page";
-import { BodyComp } from "../components/body-comp";
+import { App } from "../App";
+import { MainPage } from "../pages/main-page";
 import { ResultsPage } from "../pages/results-page";
 import { ProductsPage } from "../pages/products-page";
 import { CategoryPage } from "../pages/category-page";
 import { ProductPage } from "../pages/product-page";
 import { AboutUsPage } from "../pages/about-us-page";
+import { ContactPage } from "../pages/contact-page";
 
 export const indexRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Main />,
+    element: <App />,
     children: [
       {
         index: true,
-        element: <BodyComp />,
+        element: <MainPage />,
       },
       {
         path: "/search/:query",
@@ -37,6 +38,10 @@ export const indexRouter = createBrowserRouter([
       {
         path: "/about-us",
         element: <AboutUsPage />,
+      },
+      {
+        path: "/contact",
+        element: <ContactPage />,
       },
     ],
   },

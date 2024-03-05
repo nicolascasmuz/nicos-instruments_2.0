@@ -50,6 +50,7 @@ export function CategoryPage() {
       font-family: "Bungee Shade", cursive;
       font-size: 25px;
       color: #f0efda;
+      line-height: 1.25;
     }
 
     .category__select {

@@ -14,26 +14,31 @@ export function AboutUsPage() {
 
     .general-section__wrapper {
       display: grid;
+      grid-template-rows: auto auto auto;
+      grid-template-columns: auto;
+      justify-items: center;
       gap: 20px;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 769px) {
       .general-section__wrapper {
-        display: grid;
         grid-template-rows: auto auto;
         grid-template-columns: auto auto;
+        justify-items: initial;
         gap: 20px;
       }
     }
 
     .about-us__title {
+      grid-row: 1;
+      grid-column: 1;
       font-family: "Bungee Shade", cursive;
       font-size: 25px;
       color: #f0efda;
       margin: 0;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 769px) {
       .about-us__title {
         grid-row: 1;
         grid-column: 1 / span 2;
@@ -41,11 +46,11 @@ export function AboutUsPage() {
     }
 
     .about-us__pic {
-      grid-row: 1;
+      grid-row: 2;
       grid-column: 1;
     }
 
-    @media (min-width: 700px) {
+    @media (min-width: 769px) {
       .about-us__pic {
         grid-row: 2;
         grid-column: 1;
@@ -53,7 +58,13 @@ export function AboutUsPage() {
     }
 
     .about-us__shop {
-      height: 250px;
+      height: 180px;
+    }
+
+    @media (min-width: 1069px) {
+      .about-us__shop {
+        height: 250px;
+      }
     }
 
     .about-us__epigraph {
@@ -67,12 +78,27 @@ export function AboutUsPage() {
     }
 
     .about-us__text {
-      grid-row: 2;
-      grid-column: 2;
+      grid-row: 3;
+      grid-column: 1;
       font-family: "Bebas", cursive;
       font-size: 18px;
       color: #f0efda;
+      width: 300px;
       margin: 0;
+    }
+
+    @media (min-width: 769px) {
+      .about-us__text {
+        grid-row: 2;
+        grid-column: 2;
+        width: 450px;
+      }
+    }
+
+    @media (min-width: 1069px) {
+      .about-us__text {
+        width: 600px;
+      }
     }
   `;
 

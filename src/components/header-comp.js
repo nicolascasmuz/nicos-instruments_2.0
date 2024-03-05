@@ -309,9 +309,9 @@ export function Header() {
           <Link className="header__option" to="/products">
             Productos
           </Link>
-          <a href="" className="header__option">
+          <Link className="header__option" to="/contact">
             Contacto
-          </a>
+          </Link>
         </li>
       </ul>
       <nav className="nav">
@@ -321,9 +321,9 @@ export function Header() {
         <Link className="option" to="/products">
           Productos
         </Link>
-        <a className="option" href="">
+        <Link className="option" to="/contact">
           Contacto
-        </a>
+        </Link>
       </nav>
     </HeaderComp>
   );
