@@ -17,6 +17,7 @@
     "react-scripts": "5.0.1",
     "resend": "^1.0.0",
     "styled-components": "^5.3.6",
+    "ts-node": "^10.9.2",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -24,9 +25,9 @@
     "dev:back": "ts-node ./backend/dev.js",
     "dev": "npm run dev:front && npm run dev:back",
     "build:front": "react-scripts build",
-    "build:back": "ts-node ./back-src/index.js",
+    "build:back": "ts-node ./backend/index.js",
     "build": "npm run build:front && npm run build:back",
-    "start": "node ./back-src/index.js",
+    "start": "node ./backend/index.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
