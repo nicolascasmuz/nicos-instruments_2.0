@@ -22,7 +22,11 @@
   "scripts": {
     "dev:front": "react-scripts start",
     "dev:back": "ts-node ./backend/dev.js",
-    "build": "react-scripts build",
+    "dev": "npm run dev:front && npm run dev:back",
+    "build:front": "react-scripts build",
+    "build:back": "ts-node ./back-src/index.js",
+    "build": "npm run build:front && npm run build:back",
+    "start": "node ./back-src/index.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
