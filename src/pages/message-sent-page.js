@@ -14,7 +14,7 @@ const BodySection = styled.section`
 
   .general-section__wrapper {
     display: grid;
-    align-items: flex-start;
+    justify-items: center;
     gap: 65px;
   }
 
@@ -31,7 +31,21 @@ const BodySection = styled.section`
     font-family: "Bebas", cursive;
     font-size: 20px;
     color: #f0efda;
+    text-align: center;
     margin: 0;
+  }
+
+  .message-sent__button {
+    font-family: "Bebas", cursive;
+    font-size: 20px;
+    color: #f0efda;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+    background-color: #ac1a22;
+    width: 150px;
+    height: 35px;
+    transition: all 0.25s;
   }
 `;
 
@@ -43,6 +57,9 @@ export function MessageSentPage() {
         <p className="message-sent__p">
           Tu mensaje ha sido enviado, te responderemos a la brevedad.
         </p>
+        <Link to="/">
+          <button className="message-sent__button">Volver a inicio</button>
+        </Link>
       </div>
     </BodySection>
   );
