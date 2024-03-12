@@ -9,6 +9,7 @@ import { CategoryPage } from "../pages/category-page";
 import { ProductPage } from "../pages/product-page";
 import { AboutUsPage } from "../pages/about-us-page";
 import { ContactPage } from "../pages/contact-page";
+import { MessageSentPage } from "../pages/message-sent-page";
 
 export const indexRouter = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const indexRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactPage />,
+      },
+      {
+        path: "/message-sent",
+        element: <MessageSentPage />,
       },
     ],
   },
