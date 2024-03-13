@@ -2,6 +2,14 @@ import styled from "styled-components";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
+const api = { url: "" };
+
+if (process.env.REACT_APP_ENV == "development") {
+  api.url = "http://localhost:3500";
+} else if (process.env.REACT_APP_ENV == "production") {
+  api.url = process.env.REACT_APP_BACKEND_URL;
+}
+
 const BodySection = styled.section`
   display: flex;
   flex-direction: column;
@@ -148,7 +156,7 @@ export function ContactPage() {
     };
 
     if (mail.name && mail.email && mail.message) {
-      await fetch("http://localhost:3500/send-mail", {
+      await fetch(api.url + "/send-mail", {
         method: "post",
         headers: {
           "content-type": "application/json",
@@ -162,6 +170,7 @@ export function ContactPage() {
       input2El.style.border = "solid 3px #EA2027";
       input3El.style.border = "solid 3px #EA2027";
       errorEl.style.display = "block";
+      console.log("api.url: ", api.url);
     }
   };
 

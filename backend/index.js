@@ -3,7 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const resend_1 = require("./lib/resend");
 
-const port = process.env.PORT || 3500;
+const port = process.env.REACT_APP_PORT || 3500;
 const app = express();
 
 app.use(express.json({ limit: "50mb" }));
@@ -29,9 +29,9 @@ app.post("/send-mail", async (req, res) => {
   }
 });
 
-/* app.use(express.static(path.join(__dirname, "../dist")));
+app.use(express.static(path.join(__dirname, "../dist")));
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "../dist/index.html"));
-}); */
+});
 
 app.listen(port, console.log(`initialized on http://localhost:${port}`));
