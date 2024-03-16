@@ -13,14 +13,14 @@ export function Header() {
     align-items: center;
     gap: 25px;
     background-color: #f0efda;
-    font-family: "Bebas Neue", cursive;
+    font-family: "Bebas Neue Neue", cursive;
     height: 90px;
 
     @media (min-width: 769px) {
       gap: 25px;
       background-color: #f0efda;
       padding: 0px 30px;
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       width: 100%;
       height: 120px;
     }
@@ -73,7 +73,7 @@ export function Header() {
       border: none;
       text-align: left;
       font-size: 30px;
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       color: #fafafa;
     }
 
@@ -109,7 +109,7 @@ export function Header() {
     }
 
     .input {
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 30px;
       color: #fafafa;
       background-color: #141414;
@@ -128,7 +128,7 @@ export function Header() {
     .button {
       background-color: #362b2f;
       color: #f0efda;
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 100%;
       border: none;
       border-style: none;
@@ -217,7 +217,7 @@ export function Header() {
     }
 
     .header__option {
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 30px;
       text-decoration: none;
     }
@@ -244,7 +244,7 @@ export function Header() {
     }
 
     .option {
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       text-align: right;
       color: #080808;
       text-decoration: none;

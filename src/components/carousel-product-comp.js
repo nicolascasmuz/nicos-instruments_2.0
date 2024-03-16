@@ -30,7 +30,7 @@ const CarouselComp = styled.div`
   top: -82px;
   left: -75px;
   transform: translate(50%, 50%);
-  font-family: "Bebas", cursive;
+  font-family: "Bebas Neue", cursive;
   font-size: 25px;
   opacity: 0;
   color: #fafafa;

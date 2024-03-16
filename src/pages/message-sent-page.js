@@ -28,7 +28,7 @@ const BodySection = styled.section`
   }
 
   .message-sent__p {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 20px;
     color: #f0efda;
     text-align: center;
@@ -36,7 +36,7 @@ const BodySection = styled.section`
   }
 
   .message-sent__button {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 20px;
     color: #f0efda;
     border: none;

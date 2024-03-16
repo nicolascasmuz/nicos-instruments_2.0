@@ -54,7 +54,7 @@ export function CategoryPage() {
     }
 
     .category__select {
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 18px;
       color: #080808;
       width: 120px;

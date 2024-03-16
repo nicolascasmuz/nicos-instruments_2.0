@@ -64,7 +64,7 @@ const BodySection = styled.section`
   }
 
   .section-form__h3 {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 20px;
     color: #f0efda;
     margin: 0;
@@ -73,7 +73,7 @@ const BodySection = styled.section`
   .section-form__input-name {
     background-color: #141414;
     border: none;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 25px;
     color: #fafafa;
     width: 100%;
@@ -83,7 +83,7 @@ const BodySection = styled.section`
   .section-form__input-email {
     background-color: #141414;
     border: none;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 25px;
     color: #fafafa;
     width: 100%;
@@ -93,7 +93,7 @@ const BodySection = styled.section`
   .section-form__textarea {
     background-color: #141414;
     border: none;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 18px;
     color: #fafafa;
     width: 100%;
@@ -102,7 +102,7 @@ const BodySection = styled.section`
 
   .section-form__error {
     display: none;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 20px;
     color: #ea2027;
     margin: 0;
@@ -112,7 +112,7 @@ const BodySection = styled.section`
     border: none;
     background-color: #f0efda;
     color: #362b2f;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 20px;
     font-weight: 700;
     height: 45px;

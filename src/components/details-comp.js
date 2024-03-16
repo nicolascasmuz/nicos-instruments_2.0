@@ -78,20 +78,20 @@ const DetailsComp = styled.div`
 
   .details__description {
     align-self: start;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     color: #f0efda;
     margin: 0px 10px;
   }
 
   .card-price {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 25px;
     color: #f0efda;
     margin: 0px 10px;
   }
 
   .details__category {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 15px;
     color: #f0efda;
     margin: 0px 10px;
@@ -116,7 +116,7 @@ const DetailsComp = styled.div`
   }
 
   .details__buy {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 20px;
     color: #f0efda;
     border: none;

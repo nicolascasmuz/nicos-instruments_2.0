@@ -106,7 +106,7 @@ export function CarouselComp() {
       position: absolute;
       bottom: 10px;
       left: 10px;
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 25px;
       opacity: 0;
       color: #fafafa;

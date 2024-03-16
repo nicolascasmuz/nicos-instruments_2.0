@@ -71,7 +71,7 @@ export function AboutUsPage() {
       display: block;
       grid-row: 2;
       grid-column: 1;
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 14px;
       color: #f0efda;
       margin: 0;
@@ -80,7 +80,7 @@ export function AboutUsPage() {
     .about-us__text {
       grid-row: 3;
       grid-column: 1;
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 18px;
       color: #f0efda;
       width: 300px;

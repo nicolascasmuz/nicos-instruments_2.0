@@ -14,7 +14,7 @@ const FooterComp = styled.footer`
   gap: 30px;
   background-color: #f0efda;
   color: #362b2f;
-  font-family: "Bebas", cursive;
+  font-family: "Bebas Neue", cursive;
   height: auto;
   padding: 30px 0px;
 

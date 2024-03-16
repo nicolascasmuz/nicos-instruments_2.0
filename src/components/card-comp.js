@@ -66,14 +66,14 @@ const CardComp = styled.div`
 
   .card-price {
     display: inline;
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 25px;
     margin: 0px 10px;
     text-align: left;
   }
 
   .card-see-more {
-    font-family: "Bebas", cursive;
+    font-family: "Bebas Neue", cursive;
     font-size: 15px;
     color: #f0efda;
     text-align: center;

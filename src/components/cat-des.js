@@ -36,7 +36,7 @@ export function FeaturedCategories() {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      font-family: "Bebas", cursive;
+      font-family: "Bebas Neue", cursive;
       font-size: 50px;
       line-height: 40px;
       opacity: 0;
