@@ -300,9 +300,9 @@ export function Header() {
       </label>
       <ul className="header__menu-lista">
         <li>
-          <a href="" className="header__option">
+          <Link className="header__option" to="/">
             Inicio
-          </a>
+          </Link>
           <Link className="header__option" to="/about-us">
             Quienes somos
           </Link>

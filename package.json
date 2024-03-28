@@ -23,8 +23,6 @@
   "scripts": {
     "start": "node backend/index.js",
     "build": "react-scripts build && cp -r build/* public/",
-    "predeploy": "npm run build",
-    "deploy": "render deploy --build-dir public",
     "dev:front": "react-scripts start",
     "dev:back": "ts-node ./backend/dev.js",
     "dev": "npm run dev:front & npm run dev:back",
