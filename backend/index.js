@@ -3,7 +3,7 @@ const cors = require("cors");
 const path = require("path");
 const resend_1 = require("./lib/resend");
 
-const port = process.env.REACT_APP_BACKEND_URL || 3500;
+const port = process.env.REACT_APP_PORT || 3500;
 const app = express();
 
 app.use(express.json({ limit: "50mb" }));
