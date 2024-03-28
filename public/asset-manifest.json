@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3ce23c5e.css",
+    "main.js": "/static/js/main.15e14407.js",
+    "static/js/787.191fc69f.chunk.js": "/static/js/787.191fc69f.chunk.js",
+    "static/media/amps-cat.png": "/static/media/amps-cat.848783d05870d7261fe7.png",
+    "static/media/basses-cat.png": "/static/media/basses-cat.f37ee42c8d903ef7f5d1.png",
+    "static/media/accesories-cat.png": "/static/media/accesories-cat.1ec45be17368fe959930.png",
+    "static/media/keyboards-cat.png": "/static/media/keyboards-cat.e4acc7f3b727306c67f4.png",
+    "static/media/classic-guitars-cat.png": "/static/media/classic-guitars-cat.9f859a874d6869948a57.png",
+    "static/media/percussion-cat.png": "/static/media/percussion-cat.ebcba1065e594713a909.png",
+    "static/media/electric-guitars-cat.png": "/static/media/electric-guitars-cat.f6821877227316958e54.png",
+    "static/media/synthesizers-cat.png": "/static/media/synthesizers-cat.eba3a0811407d6fc9d2a.png",
+    "static/media/microphones-cat.png": "/static/media/microphones-cat.5db03f4b32cb8887bd53.png",
+    "static/media/pianos-cat.png": "/static/media/pianos-cat.99abbc8727b7971ed427.png",
+    "static/media/consoles-cat.png": "/static/media/consoles-cat.03181da036361627b7bd.png",
+    "static/media/pedals-cat.png": "/static/media/pedals-cat.9c71e64cc8a2668b56a4.png",
+    "static/media/music-shop-outside.jpg": "/static/media/music-shop-outside.c61efb561862d9f87ff2.jpg",
+    "static/media/logo-shop@2000x.png": "/static/media/logo-shop@2000x.8247c2674f2da5a352cf.png",
+    "static/media/logo-zildjian.png": "/static/media/logo-zildjian.29e56ca529295ad2ec95.png",
+    "static/media/logo-roland.png": "/static/media/logo-roland.31313037bf6da47a8c7c.png",
+    "static/media/logo-fender.png": "/static/media/logo-fender.90a458664a7c3ad3b914.png",
+    "static/media/logo-yamaha.png": "/static/media/logo-yamaha.3af3ef0f8eb02477f620.png",
+    "static/media/logo-master.png": "/static/media/logo-master.ad35181c90d2de880cb2.png",
+    "static/media/logo-ibanez.png": "/static/media/logo-ibanez.20a42e3271a3f4e1de7b.png",
+    "static/media/logo-boss.png": "/static/media/logo-boss.f7866656f2fc22c8a62a.png",
+    "static/media/logo-american.png": "/static/media/logo-american.b5b1d72977559b3ff69e.png",
+    "static/media/logo-visa.png": "/static/media/logo-visa.be9219abe54ad4d3dfb1.png",
+    "static/media/arrow-right.png": "/static/media/arrow-right.a92be02a65f3c3bc6701.png",
+    "static/media/arrow-left.png": "/static/media/arrow-left.cca7499083a135ec0979.png",
+    "static/media/loupe.png": "/static/media/loupe.4b29bcbe7ac9902be20a.png",
+    "static/media/logo-whatsapp_1@4x.png": "/static/media/logo-whatsapp_1@4x.dd5e98ee8c3aafb19adf.png",
+    "static/media/logo-instagram_1@4x.png": "/static/media/logo-instagram_1@4x.100b22dbbf350c34264a.png",
+    "index.html": "/index.html",
+    "main.3ce23c5e.css.map": "/static/css/main.3ce23c5e.css.map",
+    "main.15e14407.js.map": "/static/js/main.15e14407.js.map",
+    "787.191fc69f.chunk.js.map": "/static/js/787.191fc69f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3ce23c5e.css",
+    "static/js/main.15e14407.js"
+  ]
+}
